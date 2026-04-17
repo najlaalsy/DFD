@@ -1,0 +1,44 @@
+<mxfile>
+  <diagram name="DFD Level 2 Shopee Mall">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Entity -->
+        <mxCell id="cust" value="Customer" style="shape=rectangle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="merchant" value="Merchant" style="shape=rectangle;" vertex="1" parent="1">
+          <mxGeometry x="750" y="200" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Processes -->
+        <mxCell id="p11" value="1.1 Input Pesanan" style="ellipse;" vertex="1" parent="1">
+          <mxGeometry x="250" y="100" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p12" value="1.2 Validasi Stok" style="ellipse;" vertex="1" parent="1">
+          <mxGeometry x="250" y="200" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p13" value="1.3 Simpan Pesanan" style="ellipse;" vertex="1" parent="1">
+          <mxGeometry x="250" y="300" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p14" value="1.4 Kirim ke Merchant" style="ellipse;" vertex="1" parent="1">
+          <mxGeometry x="450" y="200" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Flow -->
+        <mxCell id="f1" value="Input" edge="1" parent="1" source="cust" target="p11"/>
+        <mxCell id="f2" value="Data Pesanan" edge="1" parent="1" source="p11" target="p12"/>
+        <mxCell id="f3" value="Valid" edge="1" parent="1" source="p12" target="p13"/>
+        <mxCell id="f4" value="Detail Pesanan" edge="1" parent="1" source="p13" target="p14"/>
+        <mxCell id="f5" value="Kirim Pesanan" edge="1" parent="1" source="p14" target="merchant"/>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
