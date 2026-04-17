@@ -1,5 +1,5 @@
 <mxfile>
-  <diagram name="DFD Level 2 Shopee Mall">
+  <diagram name="DFD Level 2 Kelola Pesanan">
     <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10">
       <root>
         <mxCell id="0"/>
@@ -7,36 +7,48 @@
 
         <!-- Entity -->
         <mxCell id="cust" value="Customer" style="shape=rectangle;" vertex="1" parent="1">
-          <mxGeometry x="50" y="200" width="120" height="50" as="geometry"/>
+          <mxGeometry x="40" y="200" width="120" height="50"/>
         </mxCell>
 
         <mxCell id="merchant" value="Merchant" style="shape=rectangle;" vertex="1" parent="1">
-          <mxGeometry x="750" y="200" width="140" height="50" as="geometry"/>
+          <mxGeometry x="800" y="200" width="140" height="50"/>
         </mxCell>
 
         <!-- Processes -->
         <mxCell id="p11" value="1.1 Input Pesanan" style="ellipse;" vertex="1" parent="1">
-          <mxGeometry x="250" y="100" width="160" height="50" as="geometry"/>
+          <mxGeometry x="220" y="100" width="160" height="50"/>
         </mxCell>
 
         <mxCell id="p12" value="1.2 Validasi Stok" style="ellipse;" vertex="1" parent="1">
-          <mxGeometry x="250" y="200" width="160" height="50" as="geometry"/>
+          <mxGeometry x="220" y="200" width="160" height="50"/>
         </mxCell>
 
         <mxCell id="p13" value="1.3 Simpan Pesanan" style="ellipse;" vertex="1" parent="1">
-          <mxGeometry x="250" y="300" width="160" height="50" as="geometry"/>
+          <mxGeometry x="220" y="300" width="160" height="50"/>
         </mxCell>
 
         <mxCell id="p14" value="1.4 Kirim ke Merchant" style="ellipse;" vertex="1" parent="1">
-          <mxGeometry x="450" y="200" width="180" height="50" as="geometry"/>
+          <mxGeometry x="450" y="200" width="180" height="50"/>
         </mxCell>
 
-        <!-- Flow -->
-        <mxCell id="f1" value="Input" edge="1" parent="1" source="cust" target="p11"/>
-        <mxCell id="f2" value="Data Pesanan" edge="1" parent="1" source="p11" target="p12"/>
-        <mxCell id="f3" value="Valid" edge="1" parent="1" source="p12" target="p13"/>
-        <mxCell id="f4" value="Detail Pesanan" edge="1" parent="1" source="p13" target="p14"/>
-        <mxCell id="f5" value="Kirim Pesanan" edge="1" parent="1" source="p14" target="merchant"/>
+        <mxCell id="p15" value="1.5 Terima Konfirmasi" style="ellipse;" vertex="1" parent="1">
+          <mxGeometry x="450" y="300" width="180" height="50"/>
+        </mxCell>
+
+        <!-- Data Stores -->
+        <mxCell id="d1" value="D1 Data Pesanan" style="shape=datastore;" vertex="1" parent="1">
+          <mxGeometry x="650" y="80" width="140" height="60"/>
+        </mxCell>
+
+        <!-- Flows -->
+        <mxCell edge="1" parent="1" source="cust" target="p11" value="Input Pesanan"/>
+        <mxCell edge="1" parent="1" source="p11" target="p12" value="Data Pesanan"/>
+        <mxCell edge="1" parent="1" source="p12" target="p13" value="Valid"/>
+        <mxCell edge="1" parent="1" source="p13" target="d1" value="Simpan"/>
+        <mxCell edge="1" parent="1" source="p13" target="p14" value="Detail Pesanan"/>
+        <mxCell edge="1" parent="1" source="p14" target="merchant" value="Kirim Pesanan"/>
+        <mxCell edge="1" parent="1" source="merchant" target="p15" value="Konfirmasi"/>
+        <mxCell edge="1" parent="1" source="p15" target="p13" value="Update Status"/>
 
       </root>
     </mxGraphModel>
