@@ -7,19 +7,19 @@
 
         <!-- External Entities -->
         <mxCell id="cust" value="Customer" style="shape=rectangle;" vertex="1" parent="1">
-          <mxGeometry x="50" y="200" width="120" height="50" as="geometry"/>
+          <mxGeometry x="40" y="200" width="120" height="50" as="geometry"/>
         </mxCell>
 
         <mxCell id="merchant" value="Merchant" style="shape=rectangle;" vertex="1" parent="1">
-          <mxGeometry x="750" y="100" width="140" height="50" as="geometry"/>
+          <mxGeometry x="820" y="100" width="140" height="50" as="geometry"/>
         </mxCell>
 
         <mxCell id="payment" value="Payment Gateway" style="shape=rectangle;" vertex="1" parent="1">
-          <mxGeometry x="750" y="250" width="140" height="50" as="geometry"/>
+          <mxGeometry x="820" y="250" width="140" height="50" as="geometry"/>
         </mxCell>
 
         <mxCell id="ekspedisi" value="Ekspedisi" style="shape=rectangle;" vertex="1" parent="1">
-          <mxGeometry x="750" y="400" width="140" height="50" as="geometry"/>
+          <mxGeometry x="820" y="400" width="140" height="50" as="geometry"/>
         </mxCell>
 
         <!-- Processes -->
@@ -35,16 +35,47 @@
           <mxGeometry x="300" y="400" width="180" height="60" as="geometry"/>
         </mxCell>
 
-        <!-- Data Flows -->
-        <mxCell id="f1" value="Data Pesanan" edge="1" parent="1" source="cust" target="p1"/>
-        <mxCell id="f2" value="Detail Pesanan" edge="1" parent="1" source="p1" target="merchant"/>
-        <mxCell id="f3" value="Konfirmasi" edge="1" parent="1" source="merchant" target="p1"/>
-        <mxCell id="f4" value="Data Pembayaran" edge="1" parent="1" source="p1" target="p2"/>
-        <mxCell id="f5" value="Proses Bayar" edge="1" parent="1" source="p2" target="payment"/>
-        <mxCell id="f6" value="Status Bayar" edge="1" parent="1" source="payment" target="p2"/>
-        <mxCell id="f7" value="Permintaan Kirim" edge="1" parent="1" source="p1" target="p3"/>
-        <mxCell id="f8" value="Request Kirim" edge="1" parent="1" source="p3" target="ekspedisi"/>
-        <mxCell id="f9" value="Status Kirim" edge="1" parent="1" source="ekspedisi" target="p3"/>
+        <mxCell id="p5" value="5.0 Kelola Retur" style="ellipse;" vertex="1" parent="1">
+          <mxGeometry x="300" y="550" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Data Stores -->
+        <mxCell id="d1" value="D1 Data Pesanan" style="shape=datastore;" vertex="1" parent="1">
+          <mxGeometry x="550" y="80" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d2" value="D2 Data Pembayaran" style="shape=datastore;" vertex="1" parent="1">
+          <mxGeometry x="550" y="250" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d4" value="D4 Data Pengiriman" style="shape=datastore;" vertex="1" parent="1">
+          <mxGeometry x="550" y="400" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d5" value="D5 Data Retur" style="shape=datastore;" vertex="1" parent="1">
+          <mxGeometry x="550" y="550" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Flows -->
+        <mxCell edge="1" parent="1" source="cust" target="p1" value="Data Pesanan"/>
+        <mxCell edge="1" parent="1" source="p1" target="d1" value="Simpan Pesanan"/>
+        <mxCell edge="1" parent="1" source="p1" target="merchant" value="Detail Pesanan"/>
+        <mxCell edge="1" parent="1" source="merchant" target="p1" value="Konfirmasi"/>
+
+        <mxCell edge="1" parent="1" source="p1" target="p2" value="Data Pembayaran"/>
+        <mxCell edge="1" parent="1" source="p2" target="payment" value="Proses Pembayaran"/>
+        <mxCell edge="1" parent="1" source="payment" target="p2" value="Status Pembayaran"/>
+        <mxCell edge="1" parent="1" source="p2" target="d2" value="Simpan Pembayaran"/>
+
+        <mxCell edge="1" parent="1" source="p1" target="p3" value="Permintaan Kirim"/>
+        <mxCell edge="1" parent="1" source="p3" target="ekspedisi" value="Kirim Barang"/>
+        <mxCell edge="1" parent="1" source="ekspedisi" target="p3" value="Status Kirim"/>
+        <mxCell edge="1" parent="1" source="p3" target="d4" value="Simpan Pengiriman"/>
+
+        <mxCell edge="1" parent="1" source="cust" target="p5" value="Retur/Komplain"/>
+        <mxCell edge="1" parent="1" source="p5" target="merchant" value="Pengajuan Retur"/>
+        <mxCell edge="1" parent="1" source="p5" target="d5" value="Simpan Retur"/>
+        <mxCell edge="1" parent="1" source="p5" target="p2" value="Refund"/>
 
       </root>
     </mxGraphModel>
